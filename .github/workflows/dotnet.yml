@@ -1,0 +1,28 @@
+name: .NET
+
+on:
+    push:
+        branches: ["main", "master"]
+    pull_request:
+        branches: ["main", "master"]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v1
+              with:
+                  dotnet-version: 9.0.x
+            - name: Install dependencies
+              run: dotnet restore
+            - name: Build
+              run: dotnet build --no-restore
+            - name: Get current date
+              run: |
+                echo "YEAR=$(date +%Y)" >> $GITHUB_ENV
+                echo "MONTH=$(date +%m)" >> $GITHUB_ENV
+                echo "DAY=$(date +%d)" >> $GITHUB_ENV
+            - name: Test
+              run: dotnet run ${{ env.YEAR }}

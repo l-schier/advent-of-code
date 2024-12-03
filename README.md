@@ -1,27 +1,12 @@
 # Advent of Code
-This is a C# repository template for your [Advent of Code](https://adventofcode.com) solutions. I've been using this since 2015
-with [great success](https://github.com/encse/adventofcode). 
+This is my solutions for the [Advent of Code](https://adventofcode.com) challenges.
+I have been doing this in c# to improve my skills in the language.
+The latest challenge can be seen here:
+![](2024/calendar.svg)
 
-![](demo.gif)
-
-It's not a command line tool, but rather a batteries included framework that does the heavy lifting. While you focus on solving the problems it provides:
-
-- input download
-- a solution skeleton generator
-- online answer validation
-- regression tests
-- speed tests
-- up to date calendar in ANSI colors for the terminal, as well as an SVG version for your README.md
-- source lines of code (sloc) chart
-- an OCR for elf fonts.
-
-Due to copyright reasons I'm not allowed to include input files and problem descriptions
-within this repository. But I wanted to have a self contained version for myself that I can keep around forever, 
-so decided to commit the encrypted version of the input files. It doesn't violate the 
-copyright since it's just random garbage for everyone else but when I check it out, a plugin 
-called `git-crypt` decrypts all my inputs transparently, so that I can work with them uninterrupted.
- 
-On commit the whole process is reversed and the files get encrypted again.
+## Template
+This repositiory is based on the [AoC template](https://github.com/encse/adventofcode-template) by [encse](https://github.com/encse).
+All credits to him for the template.
 
 ## Dependencies
 

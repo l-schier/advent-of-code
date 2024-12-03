@@ -18,7 +18,6 @@ class Solution : Solver {
         foreach (Match mul in matches) {
             var x = int.Parse(mul.Groups["x"].Value);
             var y = int.Parse(mul.Groups["y"].Value);
-            //Console.WriteLine($"{x} * {y} = {x * y}");
             total += x * y;
         }
         return total;

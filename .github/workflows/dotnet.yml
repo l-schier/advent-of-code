@@ -24,9 +24,6 @@ jobs:
             - name: Build
               run: dotnet build --no-restore
             - name: Get current date
-              run: |
-                echo "YEAR=$(date +%Y)" >> $GITHUB_ENV
-                echo "MONTH=$(date +%m)" >> $GITHUB_ENV
-                echo "DAY=$(date +%d)" >> $GITHUB_ENV
+              run: echo "YEAR=$(date +%Y)" >> $GITHUB_ENV
             - name: Test
               run: dotnet run ${{ env.YEAR }}

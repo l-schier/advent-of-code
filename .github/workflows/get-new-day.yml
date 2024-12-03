@@ -1,0 +1,34 @@
+name: Get new day
+
+on:
+    schedule:
+        - cron: "0 7 * 12 *"
+
+jobs:
+    get-new-day:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              name: Checkout repo
+
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v1
+              with:
+                  dotnet-version: 9.0.x
+            - name: Get current date
+              run: |
+                echo "YEAR=$(date +%Y)" >> $GITHUB_ENV &&
+                echo "MONTH=$(date +%m)" >> $GITHUB_ENV &&
+                echo "DAY=$(date +%d)" >> $GITHUB_ENV
+            - name: Update today
+              run: |
+                export SESSION=${{ secrets.SESSION }} &&
+                dotnet run update today
+            
+            - name: Commit changes
+              uses: EndBug/add-and-commit@v9
+              with:
+                author_name: GitHub Actions
+                author_email: lasse.10@hotmai.dk
+                message: "feat: Add ${{ env.YEAR }}/Day${{ env.DAY }}"
+                add: "${{ env.YEAR }}/Day${{ env.DAY }}/*"

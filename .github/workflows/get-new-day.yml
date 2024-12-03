@@ -2,7 +2,7 @@ name: Get new day
 
 on:
     schedule:
-        - cron: "0 7 * 12 *"
+        - cron: "0 7 1-25 12 *"
 
 jobs:
     get-new-day:

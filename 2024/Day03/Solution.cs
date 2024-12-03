@@ -25,6 +25,26 @@ class Solution : Solver {
     }
 
     public object PartTwo(string input) {
-        return 0;
+        string pattern = @"(?<do>do\(\))|(?<mul>mul\((?<x>\d{1,3}),(?<y>\d{1,3})\))|(?<dont>don't\(\))";
+        var matches = Regex.Matches(input, pattern);
+        bool doFlag = true;
+        long total = 0;
+        foreach (Match match in matches) {
+
+            if (match.Groups["do"].Success) {
+                doFlag = true;
+            }
+            else if (match.Groups["dont"].Success) {
+                doFlag = false;
+            }
+            else if (match.Groups["mul"].Success) {
+                if (doFlag) {
+                    var x = int.Parse(match.Groups["x"].Value);
+                    var y = int.Parse(match.Groups["y"].Value);
+                    total += x * y;
+                }
+            }
+        }
+        return total;
     }
 }

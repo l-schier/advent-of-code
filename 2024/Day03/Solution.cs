@@ -12,7 +12,7 @@ using AngleSharp.Text;
 class Solution : Solver {
 
     public object PartOne(string input) {
-        string pattern = @"(?:mul\((?<x>[0-9]{1,3}),(?<y>[0-9]{1,3})\))";
+        string pattern = @"(?:mul\((?<x>\d{1,3}),(?<y>\d{1,3})\))";
         var matches = Regex.Matches(input, pattern);
         var total = 0;
         foreach (Match mul in matches) {

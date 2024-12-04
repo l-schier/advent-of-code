@@ -16,6 +16,7 @@ jobs:
               uses: actions/setup-dotnet@v1
               with:
                   dotnet-version: 9.0.x
+            - uses: Flydiverny/setup-git-crypt@v1
             - name: Unlock secrets
               uses: sliteteam/github-action-git-crypt-unlock@1.2.0
               env:
@@ -34,6 +35,6 @@ jobs:
               uses: EndBug/add-and-commit@v9
               with:
                 author_name: GitHub Actions
-                author_email: lasse.10@hotmai.dk
+                author_email: lasse.10@hotmail.dk
                 message: "feat: Add ${{ env.YEAR }}/Day${{ env.DAY }}"
                 add: "${{ env.YEAR }}/Day${{ env.DAY }}/*"

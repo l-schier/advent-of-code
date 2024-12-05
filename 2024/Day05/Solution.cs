@@ -18,7 +18,11 @@ class Solution : Solver {
     }
 
     public object PartTwo(string input) {
-        return 0;
+        var (updates, comparer) = Parse(input);
+        return updates
+            .Where(pages => !Sorted(pages, comparer))
+            .Select(pages => pages.OrderBy(p => p, comparer).ToArray())
+            .Sum(GetMiddle);
     }
 
     (string[][] updates, Comparer<string>) Parse(string input) {
